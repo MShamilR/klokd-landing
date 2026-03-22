@@ -160,5 +160,67 @@ document.querySelectorAll(".faq-item").forEach((item) => {
   });
 });
 
-console.log("🎯 Klokd Landing Page Loaded");
-console.log("💚 Your Digital Time Watch");
+// Privacy Policy Modal
+(function () {
+  const overlay = document.getElementById('privacy-modal');
+  const closeBtn = document.getElementById('modal-close');
+  const trigger = document.getElementById('privacy-link');
+
+  function openModal() {
+    overlay.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+    const url = new URL(window.location);
+    url.searchParams.set('modal', 'privacy');
+    history.pushState({modal: 'privacy'}, '', url);
+  }
+
+  function closeModal() {
+    overlay.classList.remove('is-open');
+    document.body.style.overflow = '';
+    const url = new URL(window.location);
+    url.searchParams.delete('modal');
+    history.pushState({}, '', url);
+  }
+
+  if (trigger) {
+    trigger.addEventListener('click', function (e) {
+      e.preventDefault();
+      openModal();
+    });
+  }
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeModal);
+  }
+
+  if (overlay) {
+    overlay.addEventListener('click', function (e) {
+      if (e.target === overlay) closeModal();
+    });
+  }
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && overlay && overlay.classList.contains('is-open')) {
+      closeModal();
+    }
+  });
+
+  window.addEventListener('popstate', function (e) {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('modal') === 'privacy') {
+      overlay && overlay.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    } else {
+      overlay && overlay.classList.remove('is-open');
+      document.body.style.overflow = '';
+    }
+  });
+
+  // Auto-open if query param is present on load
+  if (new URLSearchParams(window.location.search).get('modal') === 'privacy') {
+    openModal();
+  }
+})();
+
+console.log("Klokd Landing Page Loaded");
+console.log("Your Digital Time Watch");

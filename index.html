@@ -73,10 +73,52 @@
         </div>
       </div>
       <div class="copyright-line">
-        <p>&copy; <span id="copyright-year"></span> Klokd. All rights reserved.</p>
+        <p>&copy; <span id="copyright-year"></span> Klokd. All rights reserved. &middot; <a href="?modal=privacy" class="privacy-link" id="privacy-link">Privacy Policy</a></p>
       </div>
     </div>
   </section>
+
+  <!-- Privacy Policy Modal -->
+  <div class="modal-overlay" id="privacy-modal" role="dialog" aria-modal="true" aria-labelledby="privacy-modal-title">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 id="privacy-modal-title">Privacy Policy</h2>
+        <button class="modal-close" id="modal-close" aria-label="Close privacy policy">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-updated">Last updated: March 2026</p>
+
+        <h3>Overview</h3>
+        <p>Klokd is built privacy-first. All data stays on your device — we have no servers, no accounts, and we collect nothing about you.</p>
+
+        <h3>Data We Collect</h3>
+        <p>Klokd collects <strong>no personal data</strong>. The extension only stores the following locally in your browser:</p>
+        <ul>
+          <li>Time spent on websites (stored locally in browser storage)</li>
+          <li>Your configured time limits and preferences</li>
+        </ul>
+        <p>This data never leaves your device and is never transmitted to us or any third party.</p>
+
+        <h3>Permissions</h3>
+        <p>Klokd requests the following browser permissions:</p>
+        <ul>
+          <li><strong>tabs</strong> — to detect which site is active and measure time</li>
+          <li><strong>storage</strong> — to save your usage data and settings locally</li>
+          <li><strong>alarms</strong> — to trigger limit notifications</li>
+        </ul>
+        <p>No permission is used to read page content, form data, passwords, or any personal information.</p>
+
+        <h3>Third Parties</h3>
+        <p>Klokd does not share any data with third parties. There are no analytics, no tracking pixels, no ads, and no external API calls made by the extension.</p>
+
+        <h3>Data Deletion</h3>
+        <p>All data is stored in your browser's local storage. You can delete it at any time by uninstalling the extension or clearing the extension's storage via your browser settings.</p>
+
+        <h3>Contact</h3>
+        <p>If you have any questions about this privacy policy, please open an issue on our GitHub or contact us via the Firefox Add-ons listing page.</p>
+      </div>
+    </div>
+  </div>
 
   <script src="js/script.js"></script>
 </body>
