@@ -1547,6 +1547,15 @@ section {
   margin-bottom: 6px;
 }
 
+.modal-link {
+  color: var(--neon-green);
+  text-decoration: none;
+}
+
+.modal-link:hover {
+  text-decoration: underline;
+}
+
 /* ===== Animations ===== */
 @keyframes fadeInUp {
   from {

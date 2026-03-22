@@ -160,18 +160,19 @@ document.querySelectorAll(".faq-item").forEach((item) => {
   });
 });
 
-// Privacy Policy Modal
-(function () {
-  const overlay = document.getElementById('privacy-modal');
-  const closeBtn = document.getElementById('modal-close');
-  const trigger = document.getElementById('privacy-link');
+// Modal system
+function initModal(paramValue, overlayId, closeBtnId, triggerId) {
+  const overlay = document.getElementById(overlayId);
+  const closeBtn = document.getElementById(closeBtnId);
+  const trigger = document.getElementById(triggerId);
+  if (!overlay) return;
 
   function openModal() {
     overlay.classList.add('is-open');
     document.body.style.overflow = 'hidden';
     const url = new URL(window.location);
-    url.searchParams.set('modal', 'privacy');
-    history.pushState({modal: 'privacy'}, '', url);
+    url.searchParams.set('modal', paramValue);
+    history.pushState({modal: paramValue}, '', url);
   }
 
   function closeModal() {
@@ -193,34 +194,34 @@ document.querySelectorAll(".faq-item").forEach((item) => {
     closeBtn.addEventListener('click', closeModal);
   }
 
-  if (overlay) {
-    overlay.addEventListener('click', function (e) {
-      if (e.target === overlay) closeModal();
-    });
-  }
+  overlay.addEventListener('click', function (e) {
+    if (e.target === overlay) closeModal();
+  });
 
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && overlay && overlay.classList.contains('is-open')) {
-      closeModal();
-    }
+    if (e.key === 'Escape' && overlay.classList.contains('is-open')) closeModal();
   });
 
-  window.addEventListener('popstate', function (e) {
-    const params = new URLSearchParams(window.location.search);
-    if (params.get('modal') === 'privacy') {
-      overlay && overlay.classList.add('is-open');
+  window.addEventListener('popstate', function () {
+    const val = new URLSearchParams(window.location.search).get('modal');
+    if (val === paramValue) {
+      overlay.classList.add('is-open');
       document.body.style.overflow = 'hidden';
     } else {
-      overlay && overlay.classList.remove('is-open');
-      document.body.style.overflow = '';
+      overlay.classList.remove('is-open');
+      if (!document.querySelector('.modal-overlay.is-open')) {
+        document.body.style.overflow = '';
+      }
     }
   });
 
-  // Auto-open if query param is present on load
-  if (new URLSearchParams(window.location.search).get('modal') === 'privacy') {
+  if (new URLSearchParams(window.location.search).get('modal') === paramValue) {
     openModal();
   }
-})();
+}
+
+initModal('privacy', 'privacy-modal', 'modal-close', 'privacy-link');
+initModal('support', 'support-modal', 'support-modal-close', 'support-link');
 
 console.log("Klokd Landing Page Loaded");
 console.log("Your Digital Time Watch");
