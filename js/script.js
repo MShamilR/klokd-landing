@@ -16,14 +16,34 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
 const nav = document.querySelector(".nav");
 let lastScroll = 0;
 
+// Theme toggle
+const themeToggle = document.getElementById('theme-toggle');
+const themeIcon = document.getElementById('theme-icon');
+
+function setTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  localStorage.setItem('klokd-theme', theme);
+  themeIcon.className = theme === 'light' ? 'fa-solid fa-moon' : 'fa-solid fa-sun';
+  if (nav) nav.style.background = '';
+}
+
+// Initialize from localStorage (default: light)
+setTheme(localStorage.getItem('klokd-theme') || 'light');
+
+themeToggle.addEventListener('click', () => {
+  const current = document.documentElement.getAttribute('data-theme');
+  setTheme(current === 'light' ? 'dark' : 'light');
+});
+
 window.addEventListener("scroll", () => {
   const currentScroll = window.pageYOffset;
+  const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
 
   if (currentScroll > 100) {
-    nav.style.background = "rgba(10, 10, 15, 0.95)";
-    nav.style.boxShadow = "0 4px 30px rgba(0, 0, 0, 0.3)";
+    nav.style.background = isDark ? "rgba(10, 10, 15, 0.95)" : "rgba(245, 247, 245, 0.95)";
+    nav.style.boxShadow = isDark ? "0 4px 30px rgba(0, 0, 0, 0.3)" : "0 4px 30px rgba(0, 0, 0, 0.07)";
   } else {
-    nav.style.background = "rgba(10, 10, 15, 0.8)";
+    nav.style.background = isDark ? "rgba(10, 10, 15, 0.8)" : "rgba(245, 247, 245, 0.9)";
     nav.style.boxShadow = "none";
   }
 

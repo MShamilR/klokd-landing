@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 
 <head>
   <meta charset="UTF-8">
@@ -17,11 +17,12 @@
   <meta name="twitter:title" content="Klokd — Your Digital Time Watch">
   <meta name="twitter:description" content="Elegant. Effective. Private. The time habit app for your browser.">
   <meta name="twitter:image" content="images/app-preview-2.png">
+  <script>(function(){var t=localStorage.getItem('klokd-theme')||'light';document.documentElement.setAttribute('data-theme',t);})();</script>
   <link rel="stylesheet" href="css/styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Overpass:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="icon" type="image/png" href="images/logo.png">
@@ -44,18 +45,9 @@
         <span>Klokd</span>
       </div>
       <div class="nav-browser-icons">
-        <a href="https://addons.mozilla.org/en-US/firefox/addon/klokd/" target="_blank" rel="noopener noreferrer"
-          class="nav-browser-icon" title="Firefox — Try Now Free">
-          <i class="fa-brands fa-firefox-browser"></i>
-        </a>
-        <a href="https://chromewebstore.google.com/detail/ombbfbpjohpmmcecffjhimgbkpcogdbn?utm_source=item-share-cb"
-          target="_blank" rel="noopener noreferrer" class="nav-browser-icon" title="Chrome — Try Now Free">
-          <i class="fa-brands fa-chrome"></i>
-        </a>
-        <a href="https://chromewebstore.google.com/detail/ombbfbpjohpmmcecffjhimgbkpcogdbn?utm_source=item-share-cb"
-          target="_blank" rel="noopener noreferrer" class="nav-browser-icon" title="Brave — Try Now Free">
-          <img src="https://img.icons8.com/?size=100&id=ze7acUqja_dP&format=png&color=00FF00" alt="Brave" />
-        </a>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark mode">
+          <i class="fa-solid fa-moon" id="theme-icon"></i>
+        </button>
       </div>
     </div>
   </nav>
@@ -75,7 +67,15 @@
         </div>
         <div class="hero-visual">
           <div class="dashboard-mockup">
-            <img src="images/app-preview-2.png" alt="Klokd Dashboard Preview" class="app-preview-img" />
+            <div class="mockup-header">
+              <div class="mockup-dots">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <div class="mockup-urlbar">klokd://dashboard</div>
+            </div>
+            <img src="images/screenshot.png" alt="Klokd Dashboard Preview" class="app-preview-img" />
           </div>
         </div>
         <div class="browser-badges">
@@ -91,7 +91,7 @@
           <a href="https://chromewebstore.google.com/detail/ombbfbpjohpmmcecffjhimgbkpcogdbn?utm_source=item-share-cb"
             target="_blank" rel="noopener noreferrer" class="browser-icon browser-icon--active"
             title="Brave — Try Now Free">
-            <img src="https://img.icons8.com/?size=100&id=ze7acUqja_dP&format=png&color=00FF00" alt="Brave" />
+            <img src="https://img.icons8.com/?size=100&id=ze7acUqja_dP&format=png&color=60936C" alt="Brave" />
           </a>
           <span class="browser-icon browser-icon--muted" title="Edge — Coming Soon">
             <i class="fa-brands fa-edge"></i>
