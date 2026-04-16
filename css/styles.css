@@ -1496,19 +1496,19 @@ section {
   }
 
   .copyright-line {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin-top: 0;
-    padding: 10px 0;
-    background: rgba(10, 10, 15, 0.92);
-    backdrop-filter: blur(10px);
-    border-top: 1px solid var(--glass-border);
+    position: relative;
+    bottom: auto;
+    left: auto;
+    right: auto;
+    margin-top: 24px;
+    padding: 16px 0;
+    background: transparent;
+    backdrop-filter: none;
+    border-top: none;
   }
 
   .hero {
-    padding-bottom: 52px;
+    padding-bottom: 0;
   }
 }
 
@@ -1532,7 +1532,7 @@ section {
   }
 
   .hero {
-    padding: 52px 0;
+    padding: 80px 0 24px;
   }
 
   .hero-title {
@@ -1885,13 +1885,6 @@ html[data-theme="light"] .modal-body h3 {
   color: var(--text-white);
 }
 
-/* Mobile copyright bar */
-@media (max-width: 768px) {
-  html[data-theme="light"] .copyright-line {
-    background: rgba(245, 247, 245, 0.95);
-    border-top-color: rgba(0, 0, 0, 0.08);
-  }
-}
 
 /* Fix text on green backgrounds — var(--bg-black) becomes light in light mode */
 html[data-theme="light"] .btn-primary {
