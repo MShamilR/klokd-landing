@@ -451,7 +451,6 @@ body {
   color: var(--text-gray);
   margin-top: 6px;
   letter-spacing: 0.04em;
-  text-transform: uppercase;
   opacity: 0.6;
 }
 
@@ -1430,11 +1429,17 @@ section {
     text-align: center;
   }
 
+  .browser-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+
   .copyright-line {
     position: relative;
     bottom: auto;
-    margin-top: 32px;
-    padding-bottom: 24px;
+    margin-top: 16px;
+    padding-bottom: 12px;
   }
 
   .hero-title {
@@ -1501,7 +1506,7 @@ section {
     left: auto;
     right: auto;
     margin-top: 24px;
-    padding: 16px 0;
+    padding: 16px 0 0px;
     background: transparent;
     backdrop-filter: none;
     border-top: none;
@@ -1532,7 +1537,7 @@ section {
   }
 
   .hero {
-    padding: 80px 0 24px;
+    padding: 80px 0 2px;
   }
 
   .hero-title {
@@ -1571,6 +1576,12 @@ section {
   .app-preview-img {
     width: 100%;
     height: auto;
+  }
+
+  .browser-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
   }
 
   .copyright-line p {
