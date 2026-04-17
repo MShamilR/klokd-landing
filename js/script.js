@@ -261,10 +261,9 @@ function drawHeatmap() {
   const cols = Math.ceil(w / cell);
   const rows = Math.ceil(h / cell);
   const isMobile = w < 768;
-  if (isMobile) return; // too distracting on small screens
 
-  const edgeCols = 3;
-  const edgeRows = 2;
+  const edgeCols = isMobile ? 2 : 3;
+  const edgeRows = isMobile ? 1 : 2;
 
   // Deterministic pseudo-random (seeded)
   function sr(seed) {
@@ -272,7 +271,7 @@ function drawHeatmap() {
     return x - Math.floor(x);
   }
 
-  const opacities = [0.05, 0.09, 0.13, 0.17, 0.22];
+  const opacities = isMobile ? [0.08, 0.12, 0.16, 0.20] : [0.05, 0.09, 0.13, 0.17, 0.22];
 
   for (let c = 0; c < cols; c++) {
     for (let r = 0; r < rows; r++) {
@@ -280,8 +279,8 @@ function drawHeatmap() {
                   || r < edgeRows || r >= rows - edgeRows;
       if (!onEdge) continue;
 
-      // ~20% fill rate
-      if (sr(c * 137 + r) > 0.20) continue;
+      // ~20% fill rate on desktop, ~12% on mobile
+      if (sr(c * 137 + r) > (isMobile ? 0.12 : 0.20)) continue;
 
       const opacity = opacities[Math.floor(sr(c * 37 + r * 91) * opacities.length)];
       ctx.fillStyle = `rgba(96, 147, 108, ${opacity})`;
